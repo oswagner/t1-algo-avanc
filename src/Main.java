@@ -70,21 +70,23 @@ public class Main {
 		do {
 			int current_value = vec[initial_pos];
 			int opossite_value = vec[final_pos];
+			boolean isCurrentOdd = isOdd(current_value);
+			boolean isOpossiteOdd = isOdd(opossite_value);
 
-			if (isOdd(current_value) && !isOdd(opossite_value)) {
+			if (isCurrentOdd && !isOpossiteOdd) {
 				vec[initial_pos] = opossite_value;
 				vec[final_pos] = current_value;
 				initial_pos++;
 				final_pos--;
-			} else if (isOdd(current_value) && isOdd(opossite_value)) {
+			} else if (isCurrentOdd && isOpossiteOdd) {
 				int aux = vec[final_pos - 1];
 				vec[initial_pos] = aux;
 				vec[final_pos - 1] = current_value;
 				final_pos = final_pos - 2;
-			} else if (!isOdd(current_value) && isOdd(opossite_value)) {
+			} else if (!isCurrentOdd && isOpossiteOdd) {
 				initial_pos++;
 				final_pos--;
-			} else if (!isOdd(current_value) && !isOdd(opossite_value)) {
+			} else if (!isCurrentOdd && !isOpossiteOdd) {
 				int aux = vec[initial_pos + 1];
 				vec[initial_pos + 1] = opossite_value;
 				vec[final_pos] = aux;
